@@ -1,1 +1,0 @@
-# Ali-haider-portfolio
