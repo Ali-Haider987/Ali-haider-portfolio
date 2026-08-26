@@ -171,7 +171,73 @@ This portfolio is deployed and hosted through GitHub Pages with HTTPS enabled by
 
 
 ---
+## Setup Instructions
 
+### Clone Repository
+
+git clone https://github.com/Ali-Haider987/Ali-haider-portfolio.git
+
+### Open Project
+
+Open the folder in VS Code or any preferred code editor.
+
+### Run Locally
+
+Open index.html in a browser.
+
+### GitHub Pages Deployment
+
+1. Push changes to GitHub.
+2. Open Repository Settings.
+3. Navigate to Pages.
+4. Select the main branch.
+5. Save and deploy.
+## Usage
+
+Visitors can:
+
+- Learn about my background and expertise.
+- Explore analytics and machine learning projects.
+- Review certifications and achievements.
+- Download my resume.
+- Access professional contact information.
+- Connect through LinkedIn or GitHub.
+---
+## Known Limitations
+
+- Most showcased projects are academic and learning-focused.
+- The portfolio currently prioritizes project presentation over interactive web applications.
+- Future updates will include larger real-world analytics and machine learning projects.
+- Some external services and links depend on third-party availability.
+---
+## Evaluation Results (V2)
+
+| Test | Status |
+|--------|--------|
+| Mobile Responsiveness | ✅ Pass |
+| Desktop Responsiveness | ✅ Pass |
+| Navigation Testing | ✅ Pass |
+| Resume Accessibility | ✅ Pass |
+| Project Links Verification | ✅ Pass |
+| GitHub Pages Deployment | ✅ Pass |
+| HTTPS Verification | ✅ Pass |
+| Cross-Browser Testing | ✅ Pass |
+---
+## AI Usage Disclosure
+
+This portfolio was developed with assistance from AI tools including Claude and Copilot.
+
+AI was used for:
+- Brainstorming design ideas
+- Content refinement
+- Debugging assistance
+- Documentation support
+- SEO recommendations
+
+Final project selection, testing, deployment, validation, content verification, and all implementation decisions were completed by me.
+
+This portfolio represents my own learning journey and work.
+---
 ## License
 
 This project is intended for portfolio and professional showcase purposes.
