@@ -163,14 +163,12 @@ This portfolio is deployed and hosted through GitHub Pages with HTTPS enabled by
 
 ## Connect With Me
 
-### LinkedIn
-Add your LinkedIn profile link here
+### Email: alihaiderds86@gmail.com
 
-### GitHub
-Add your GitHub profile link here
+### LinkedIn: linkedin.com/in/ali-haider-733715375
 
-### Email
-Add your professional email here
+### GitHub: https://github.com/Ali-Haider987
+
 
 ---
 
