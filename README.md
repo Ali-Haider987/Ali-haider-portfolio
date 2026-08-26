@@ -1,22 +1,26 @@
-# Ali Haider | Data Analytics | ML | NLP Portfolio
+# Ali Haider | Data Analytics & Machine Learning Portfolio
 
-> “I don't guess what your data means. I test it until I find what it's hiding.”
+> "I don't guess what your data means. I test it until I find what it's hiding."
+
+**Live Website:** [https://ali-haider987.github.io/Ali-haider-portfolio/](https://ali-haider987.github.io/Ali-haider-portfolio/)
+
+---
 
 ## Overview
 
 Welcome to my personal portfolio website.
 
-This portfolio showcases my journey as a Business Data Analytics student, highlighting projects, certifications, technical skills, and practical experience in Data Analytics, Machine Learning, and Natural Language Processing.
+This portfolio showcases my work in Data Analytics, Machine Learning, Natural Language Processing (NLP), and Business Intelligence. It highlights real projects, technical skills, and practical experience gained through hands-on analysis and data-driven problem solving.
 
-The website serves as a centralized platform where recruiters, academics, and industry professionals can explore my work, case studies, technical capabilities, and professional growth.
+The site serves as a central platform where recruiters, academics, and industry professionals can review my work, explore case studies, and evaluate my technical capabilities and professional growth.
 
 ---
 
 ## About Me
 
-I am Ali Haider, a Business Data Analytics student passionate about transforming raw data into meaningful insights and data-driven solutions.
+I am Ali Haider, a Business Data Analytics student focused on turning raw data into meaningful insights and practical, data-driven solutions.
 
-My interests include:
+My areas of interest include:
 
 - Data Analytics
 - Business Intelligence
@@ -28,6 +32,20 @@ My interests include:
 
 ---
 
+## Portfolio Features
+
+- Responsive design that adapts to any screen size
+- Mobile-friendly layout for on-the-go browsing
+- Dedicated project showcase pages with detailed case studies
+- Quick and easy access to my resume
+- A clear contact section for professional inquiries
+- SEO optimization for better search visibility
+- Social sharing metadata (Open Graph and Twitter Card) for clean link previews
+- Google Analytics 4 integration for traffic and engagement tracking
+- Secure HTTPS deployment through GitHub Pages
+
+---
+
 ## Portfolio Sections
 
 ### Home
@@ -36,7 +54,8 @@ My interests include:
 - Core specialization areas
 
 ### Projects
-A curated collection of analytics and machine learning projects including:
+A curated collection of analytics and machine learning projects, including:
+
 - Data analysis projects
 - Dashboard development
 - Predictive modeling
@@ -44,6 +63,7 @@ A curated collection of analytics and machine learning projects including:
 - NLP-based solutions
 
 Each project includes:
+
 - Project overview
 - Business problem
 - Methodology
@@ -56,6 +76,7 @@ A collection of completed professional certifications with verification links an
 
 ### Technical Skills
 Areas covered include:
+
 - Python
 - SQL
 - Excel
@@ -72,18 +93,13 @@ Professional contact information and social links.
 
 ## Technologies Used
 
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
-
-### Deployment
-- GitHub Pages
-
-### Development Tools
-- Git
-- GitHub
-- VS Code
+| Category | Technologies |
+|---|---|
+| Frontend | HTML5, CSS3, JavaScript |
+| Data & Analysis | Python, Power BI |
+| Analytics | Google Analytics 4 |
+| Version Control | Git |
+| Deployment | GitHub Pages |
 
 ---
 
@@ -98,13 +114,22 @@ Building predictive models and intelligent analytical solutions.
 ### Natural Language Processing
 Extracting information and insights from textual data.
 
+### Business Intelligence
+Turning data into clear, decision-ready reporting and dashboards.
+
 ---
 
-## Website Link
+## Analytics
 
-Visit the live portfolio:
+Google Analytics 4 (GA4) has been integrated into this portfolio to monitor website traffic and visitor engagement. This allows me to understand how visitors interact with the site, which pages perform best, and where improvements can be made to enhance the user experience.
 
-**[PortfolioB_PAGES_LINK_HERE**
+---
+
+## Deployment
+
+This portfolio is deployed and hosted through GitHub Pages with HTTPS enabled by default.
+
+**Live URL:** [https://ali-haider987.github.io/Ali-haider-portfolio/](https://ali-haider987.github.io/Ali-haider-portfolio/)
 
 ---
 
@@ -154,4 +179,3 @@ Add your professional email here
 This project is intended for portfolio and professional showcase purposes.
 
 © Ali Haider. All rights reserved.
-``
