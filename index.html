@@ -489,6 +489,34 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
   border-radius:14px; padding:16px 18px; margin-top:28px; font-size:13.5px; color:var(--text-dim);
 }
 
+/* ============ CONTACT FORM ============ */
+.contact-form-wrap{margin-top:40px;}
+.contact-form-panel{padding:36px;}
+.contact-form-head{margin-bottom:28px;}
+.contact-form-head h3{font-size:20px; margin-bottom:8px;}
+.contact-form-head p{font-size:14px;}
+.contact-form{display:flex; flex-direction:column; gap:20px;}
+.form-row{display:flex; flex-direction:column; gap:8px;}
+.form-row label{font-size:13px; font-weight:500; color:var(--text-dim); font-family:'Inter',sans-serif;}
+.form-row input, .form-row textarea{
+  background:rgba(255,255,255,0.03); border:1px solid var(--line-strong); border-radius:10px;
+  padding:13px 16px; font-family:'Inter',sans-serif; font-size:14.5px; color:var(--text);
+  transition:border-color .2s var(--ease), background .2s var(--ease); resize:vertical; width:100%;
+}
+.form-row input::placeholder, .form-row textarea::placeholder{color:var(--text-faint);}
+.form-row input:focus, .form-row textarea:focus{outline:none; border-color:var(--accent-2); background:rgba(255,255,255,0.05);}
+.form-row textarea{min-height:140px; line-height:1.6;}
+.contact-form-submit{align-self:flex-start; margin-top:4px;}
+.contact-form-submit:disabled{opacity:.6; cursor:not-allowed; transform:none !important;}
+.form-status{display:none; align-items:flex-start; gap:10px; padding:14px 16px; border-radius:12px; font-size:13.5px; line-height:1.6;}
+.form-status.show{display:flex;}
+.form-status svg{width:18px; height:18px; flex-shrink:0; margin-top:1px;}
+.form-status-success{background:rgba(91,141,191,0.10); border:1px solid rgba(91,141,191,0.3); color:var(--text);}
+.form-status-success svg{color:var(--accent-2);}
+.form-status-error{background:rgba(217,94,94,0.10); border:1px solid rgba(217,94,94,0.32); color:var(--text);}
+.form-status-error svg{color:#E08585;}
+@media (max-width:700px){.contact-form-panel{padding:24px;}}
+
 /* utility */
 .mt-8{margin-top:64px;} .mt-4{margin-top:32px;}
 .flex-center{display:flex; align-items:center; justify-content:center;}
@@ -1193,6 +1221,42 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
       <span class="mono" style="color:var(--accent-2)">Note -</span>
       <span>Email or LinkedIn are the fastest way to reach me in the meantime.</span>
     </div>
+
+    <div class="contact-form-wrap reveal">
+      <div class="contact-form-panel panel">
+        <div class="contact-form-head">
+          <h3>Send a message</h3>
+          <p class="mono" style="font-size:12.5px; letter-spacing:0.04em; color:var(--text-faint);">Prefer a form? Fill this in and I'll reply by email.</p>
+        </div>
+        <form id="contactForm" class="contact-form" action="https://formspree.io/alihaiderds86@gmail.com" method="POST">
+          <div class="form-row">
+            <label for="cf-name">Full Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your full name" autocomplete="name" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" placeholder="Tell me about the role or project you have in mind..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary contact-form-submit" id="cfSubmitBtn">
+            <span class="cf-btn-label">Send Message</span>
+          </button>
+
+          <div class="form-status form-status-success" id="cfSuccess" role="status">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Thanks - your message has been sent. I'll get back to you soon.</span>
+          </div>
+          <div class="form-status form-status-error" id="cfError" role="alert">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>Something went wrong sending your message. Please try again, or email me directly.</span>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1349,6 +1413,53 @@ function initReveal(){
   }, {threshold:0.12});
   document.querySelectorAll('.page.active .reveal, .page.active .reveal-stagger').forEach(el=>revealObserver.observe(el));
 }
+
+/* ============ CONTACT FORM (Formspree) ============ */
+function initContactForm(){
+  const form = document.getElementById('contactForm');
+  if(!form || form.dataset.bound) return;
+  form.dataset.bound = 'true';
+
+  const btn = document.getElementById('cfSubmitBtn');
+  const btnLabel = btn.querySelector('.cf-btn-label');
+  const successEl = document.getElementById('cfSuccess');
+  const errorEl = document.getElementById('cfError');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    successEl.classList.remove('show');
+    errorEl.classList.remove('show');
+    btn.disabled = true;
+    const originalLabel = btnLabel.textContent;
+    btnLabel.textContent = 'Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if(response.ok){
+        successEl.classList.add('show');
+        form.reset();
+      } else {
+        return response.json().then(data => {
+          const msg = (data && data.errors) ? data.errors.map(er => er.message).join(', ') : 'Form submission failed';
+          throw new Error(msg);
+        }).catch(()=>{ throw new Error('Form submission failed'); });
+      }
+    })
+    .catch(err => {
+      errorEl.classList.add('show');
+      console.error('Contact form error:', err);
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btnLabel.textContent = originalLabel;
+    });
+  });
+}
+initContactForm();
 
 /* ============ CASE STUDY TOC ACTIVE STATE ============ */
 document.querySelectorAll('.case-toc').forEach(toc=>{
