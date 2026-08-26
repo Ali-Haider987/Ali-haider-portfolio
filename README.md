@@ -1,4 +1,4 @@
-# Ali Haider | Data Analytics Portfolio
+# Ali Haider | Data Analytics | ML | NLP Portfolio
 
 > “I don't guess what your data means. I test it until I find what it's hiding.”
 
