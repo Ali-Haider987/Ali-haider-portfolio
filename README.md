@@ -3,6 +3,9 @@
 > "I don't guess what your data means. I test it until I find what it's hiding."
 
 **Live Website:** [https://ali-haider987.github.io/Ali-haider-portfolio/](https://ali-haider987.github.io/Ali-haider-portfolio/)
+## Website Preview
+
+This portfolio serves as a central hub for my academic, analytical, and technical work. It showcases projects, certifications, technical skills, and professional development in Data Analytics, Machine Learning, Natural Language Processing, and Business Intelligence.
 
 ---
 
@@ -237,6 +240,22 @@ AI was used for:
 Final project selection, testing, deployment, validation, content verification, and all implementation decisions were completed by me.
 
 This portfolio represents my own learning journey and work.
+---
+### Analytics Status
+
+✅ Google Analytics 4 Installed
+
+✅ Realtime Tracking Verified
+
+✅ HTTPS Enabled
+
+✅ Mobile Tested
+
+✅ Social Sharing Metadata Configured
+---
+## Branding
+
+The portfolio includes a custom favicon and consistent personal branding to improve recognition across browsers, bookmarks, and social previews.
 ---
 ## License
 
