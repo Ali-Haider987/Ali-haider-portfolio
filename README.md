@@ -152,7 +152,34 @@ This portfolio is deployed and hosted through GitHub Pages with HTTPS enabled by
 ```
 
 ---
+### Architecture Sketch
 
+This is a static site there's no backend server or database. Here's how the pieces fit together:
+                        ┌────────────────────────┐
+                        │   Visitor's Browser     │
+                        └───────────┬─────────────┘
+                                    │  HTTPS request
+                                    ▼
+                        ┌────────────────────────┐
+                        │   GitHub Pages (host)   │
+                        │  serves static files    │
+                        └───────────┬─────────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              ▼                     ▼                     ▼
+      ┌──────────────┐     ┌──────────────┐      ┌──────────────────┐
+      │  index.html  │     │  /projects   │      │ /certifications  │
+      │  (HTML/CSS/  │     │  case study  │      │   credentials &  │
+      │   JS shell)  │     │    pages     │      │   verification   │
+      └──────┬───────┘     └──────────────┘      └──────────────────┘
+             │
+             ▼
+      ┌──────────────────┐
+      │  Google Analytics │
+      │  4 (GA4) tracking │
+      │  script           │
+      └───────────────────┘
+---
 ## Future Enhancements
 
 - Additional project case studies
@@ -195,16 +222,15 @@ Open index.html in a browser.
 3. Navigate to Pages.
 4. Select the main branch.
 5. Save and deploy.
-## Usage
+### Usage
 
-Visitors can:
+Visitors can use the site as follows:
 
-- Learn about my background and expertise.
-- Explore analytics and machine learning projects.
-- Review certifications and achievements.
-- Download my resume.
-- Access professional contact information.
-- Connect through LinkedIn or GitHub.
+View a project case study: Go to the Projects section on the homepage → click any project card → see the project overview, business problem, methodology, visualizations, key findings, and technologies used for that project.
+Check a certification: Go to the Certifications section → click a certification entry → follow the verification link to confirm the credential on the issuing platform.
+Download the resume: From the homepage, use the resume link/button → opens or downloads the PDF directly.
+Get in touch: Go to the Contact section → use the listed email, or click through to LinkedIn/GitHub for direct outreach
+
 ---
 ## Known Limitations
 
@@ -213,6 +239,7 @@ Visitors can:
 - Future updates will include larger real-world analytics and machine learning projects.
 - Some external services and links depend on third-party availability.
 ---
+
 ## Evaluation Results (V2)
 
 | Test | Status |
