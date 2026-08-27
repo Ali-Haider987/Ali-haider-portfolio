@@ -152,16 +152,14 @@ This portfolio is deployed and hosted through GitHub Pages with HTTPS enabled by
 ```
 
 ---
-### ### Architecture Sketch
+### Architecture Sketch
 
 This is a static site — there's no backend server or database. Here's how the pieces fit together:
 
-​```text
+```text
                         ┌────────────────────────┐
                         │   Visitor's Browser     │
                         └───────────┬─────────────┘
-                        ...
-​```
                                     │  HTTPS request
                                     ▼
                         ┌────────────────────────┐
@@ -183,6 +181,7 @@ This is a static site — there's no backend server or database. Here's how the 
       │  4 (GA4) tracking │
       │  script           │
       └───────────────────┘
+```
 ---
 ## Future Enhancements
 
