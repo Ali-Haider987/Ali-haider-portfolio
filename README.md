@@ -152,12 +152,16 @@ This portfolio is deployed and hosted through GitHub Pages with HTTPS enabled by
 ```
 
 ---
-### Architecture Sketch
+### ### Architecture Sketch
 
-This is a static site there's no backend server or database. Here's how the pieces fit together:
+This is a static site — there's no backend server or database. Here's how the pieces fit together:
+
+​```text
                         ┌────────────────────────┐
                         │   Visitor's Browser     │
                         └───────────┬─────────────┘
+                        ...
+​```
                                     │  HTTPS request
                                     ▼
                         ┌────────────────────────┐
