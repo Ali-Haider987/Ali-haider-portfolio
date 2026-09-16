@@ -305,6 +305,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
 .chip-1{top:14px; left:-30px; animation-delay:0s;}
 .chip-2{bottom:60px; right:-46px; animation-delay:1.4s;}
 .chip-3{bottom:-14px; left:10px; animation-delay:2.6s;}
+.chip-4{top:6px; right:-64px; animation-delay:3.8s;}
 @keyframes floaty{0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}}
 
 @media (max-width:900px){
@@ -315,14 +316,14 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
 
 /* ============ LOGO STRIP / PROOF ============ */
 .proof-strip{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
   background:var(--line); border:1px solid var(--line); border-radius:20px; overflow:hidden;
 }
 .proof-cell{background:var(--panel); padding:32px 24px; text-align:left;}
-.proof-cell .num{font-family:'JetBrains Mono',monospace; font-size:clamp(24px,3vw,32px); color:var(--text); display:block; margin-bottom:6px;}
+.proof-cell .num{font-family:'JetBrains Mono',monospace; font-size:clamp(22px,2.6vw,32px); color:var(--text); display:block; margin-bottom:6px;}
 .proof-cell .num .accentnum{color:var(--accent-2);}
 .proof-cell .lbl{font-size:13px; color:var(--text-dim);}
-@media (max-width:800px){.proof-strip{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:1000px){.proof-strip{grid-template-columns:repeat(2,1fr);}}
 
 /* ============ CARDS ============ */
 .card-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
@@ -574,6 +575,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
           <a href="#" onclick="goPage('case-sentiment');return false;"><span class="t">Sentiment Analysis</span><span class="s">331,226 reviews · 28 apps</span></a>
           <a href="#" onclick="goPage('case-adventureworks');return false;"><span class="t">AdventureWorks Dashboard</span><span class="s">Power BI · revenue vs. margin</span></a>
           <a href="#" onclick="goPage('case-jobmarket');return false;"><span class="t">Job Market Research</span><span class="s">20 JDs · Pakistan vs. global</span></a>
+          <a href="#" onclick="goPage('case-flyrank');return false;"><span class="t">Content-Refresh Prioritization</span><span class="s">FlyRank internship · 30,000 pages</span></a>
         </div>
       </div>
       <a href="#" data-page="projects" onclick="goPage('projects');return false;">Projects</a>
@@ -593,6 +595,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
     <a href="#" onclick="goPage('case-sentiment');closeMobile();return false;">→ Sentiment Analysis</a>
     <a href="#" onclick="goPage('case-adventureworks');closeMobile();return false;">→ AdventureWorks Dashboard</a>
     <a href="#" onclick="goPage('case-jobmarket');closeMobile();return false;">→ Job Market Research</a>
+    <a href="#" onclick="goPage('case-flyrank');closeMobile();return false;">→ Content-Refresh Prioritization</a>
   </div>
   <a href="#" onclick="goPage('projects');closeMobile();return false;">Projects</a>
   <a href="#" onclick="goPage('about');closeMobile();return false;">About</a>
@@ -639,6 +642,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
         <div class="float-chip chip-1"><span class="v mono">F1 0.642</span><span class="k">Logistic Regression</span></div>
         <div class="float-chip chip-2"><span class="v mono">$28.3M</span><span class="k">Bikes revenue</span></div>
         <div class="float-chip chip-3"><span class="v mono">SQL 16/20</span><span class="k">Top JD skill</span></div>
+        <div class="float-chip chip-4"><span class="v mono">0.76 P@50</span><span class="k">Random Forest, client holdout</span></div>
       </div>
     </div>
   </div>
@@ -649,6 +653,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
       <div class="proof-cell"><span class="num">$28.3M <span class="mono" style="font-size:14px;color:var(--text-faint)">vs $0.7M</span></span><span class="lbl">Bikes vs. Accessories revenue - despite Accessories having the better margin</span></div>
       <div class="proof-cell"><span class="num">16<span class="mono" style="font-size:14px;color:var(--text-faint)">/20</span></span><span class="lbl">job descriptions asking for SQL, the single most-demanded skill in the sample</span></div>
       <div class="proof-cell"><span class="num">2<span class="mono" style="font-size:14px;color:var(--text-faint)">/20</span></span><span class="lbl">job descriptions asking for Python - far below what the curriculum weight implies</span></div>
+      <div class="proof-cell"><span class="num"><span class="accentnum">0.76</span> <span class="mono" style="font-size:14px;color:var(--text-faint)">P@50</span></span><span class="lbl">Random Forest's Precision@50 on 6 clients it never trained on, vs. a rule that only ever flags 17 of 30,000 pages</span></div>
     </div>
   </div>
 
@@ -688,10 +693,35 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
     </div>
   </div>
 
+  <div class="container section">
+    <div class="section-head reveal">
+      <div class="eyebrow">Second lead case study</div>
+      <h2>Which pages should a strained content team open first?</h2>
+      <p>An anonymized 30,000-page, 32-client export from a FlyRank internship, tested on 6 clients the model never trained on.</p>
+    </div>
+    <div class="panel reveal" style="padding:40px;">
+      <div class="grid2">
+        <div>
+          <div class="chart-bars">
+            <div class="col"><div class="val">0.500</div><div class="bar dim" style="height:50%"></div><div class="lbl">Baseline rule</div></div>
+            <div class="col"><div class="val">0.702</div><div class="bar dim" style="height:70%"></div><div class="lbl">Logistic Regression</div></div>
+            <div class="col"><div class="val">0.749</div><div class="bar" style="height:75%"></div><div class="lbl">Random Forest</div></div>
+          </div>
+          <p class="mono" style="font-size:12px;margin-top:18px;color:var(--text-faint)">ROC-AUC, client-holdout test split (6 of 32 clients)</p>
+        </div>
+        <div style="display:flex; flex-direction:column; justify-content:center; gap:18px;">
+          <p style="font-size:15.5px;color:var(--text)">A hand-written rule - flag a page after 180+ days with no update if it's still pulling meaningful impressions - only ever fires on 17 of 30,000 pages. Random Forest reached a 0.749 ROC-AUC against the rule's uninformative 0.500 baseline.</p>
+          <p style="font-size:14.5px;">The bigger finding was in the validation design itself: re-scoring the same model under a naive row-random split let 31 of 32 clients leak into both train and test, overstating Precision@50 by 0.14 - which is why the client-grouped split is the one that ships.</p>
+          <button class="btn btn-ghost" style="align-self:flex-start" onclick="goPage('case-flyrank')">Read the full case study →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container section-tight">
     <div class="section-head reveal">
       <div class="eyebrow">Selected work</div>
-      <h2>Three problems, tested from scratch</h2>
+      <h2>Four problems, tested from scratch</h2>
       <p>Each one starts with an assumption worth checking, not a conclusion worth confirming.</p>
     </div>
     <div class="card-grid reveal-stagger" id="homeProjectGrid"></div>
@@ -729,7 +759,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
   <div class="container page-hero">
     <div class="breadcrumb"><a href="#" onclick="goPage('home');return false;">Home</a> / Projects</div>
     <h1>Every project, the metric that mattered, and the tools behind it.</h1>
-    <p class="lede">Three problems worked end to end - from a plain question to a decision someone could act on.</p>
+    <p class="lede">Four problems worked end to end - from a plain question to a decision someone could act on.</p>
   </div>
   <div class="container section-tight">
     <div class="card-grid reveal-stagger" id="projectsGridFull"></div>
@@ -972,6 +1002,101 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
         </div>
         <div class="case-nav">
           <a href="#" class="prev" onclick="goPage('case-adventureworks');return false;"><span class="dir">← Previous</span><span class="t">AdventureWorks Dashboard</span></a>
+          <a href="#" class="next" onclick="goPage('case-flyrank');return false;"><span class="dir">Next case →</span><span class="t">Content-Refresh Prioritization</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CASE STUDY: FLYRANK CONTENT-REFRESH PRIORITIZATION -->
+<!-- ============================================================ -->
+<section class="page" id="page-case-flyrank">
+  <div class="container page-hero">
+    <div class="breadcrumb"><a href="#" onclick="goPage('home');return false;">Home</a> / <a href="#" onclick="goPage('projects');return false;">Case Studies</a> / Content-Refresh Prioritization</div>
+    <div class="eyebrow">Case Study 04 · Machine Learning · FlyRank Internship</div>
+    <h1>Which Pages Decline First? A Content-Refresh Prioritization Model</h1>
+    <p class="lede">A content team can't manually re-review every page every week. Built on an anonymized 30,000-page, 32-client export, tested on 6 clients the model never trained on.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="v">30,000</div><div class="k">pages, 32 clients</div></div>
+      <div class="stat"><div class="v">17</div><div class="k">pages flagged by the hand-written rule</div></div>
+      <div class="stat"><div class="v">0.749</div><div class="k">ROC-AUC, Random Forest</div></div>
+      <div class="stat"><div class="v">0.76</div><div class="k">Precision@50, client-holdout</div></div>
+    </div>
+    <a class="btn btn-primary" style="margin-top:20px" href="https://ali-haider987.github.io/alihaider-flyrank-ml/" target="_blank" rel="noopener">View the project</a>
+  </div>
+
+  <div class="container section-tight">
+    <div class="case-body">
+      <nav class="case-toc" id="toc-flyrank">
+        <a href="#f-problem">The problem</a>
+        <a href="#f-method">Method &amp; decisions</a>
+        <a href="#f-finding">What came of it</a>
+        <a href="#f-evidence">The evidence</a>
+        <a href="#f-different">What I'd do differently</a>
+      </nav>
+      <div>
+
+        <div class="case-block" id="f-problem">
+          <div class="eyebrow">The problem</div>
+          <h2>Of everything in the portfolio, what should I look at first?</h2>
+          <p>FlyRank's content team supports dozens of client portfolios at once and can't manually re-read every page every week to decide what needs attention - but the search performance data to make that call already exists for every page. The gap isn't data, it's triage.</p>
+          <p>A simple hand-written rule - flag a page if it hasn't been updated in 180+ days and is still pulling meaningful impressions - is transparent enough that a strategist can verify it by hand. But across the full 30,000-page, 32-client export it fires for only 17 pages. The rest of the portfolio gets no answer at all. The question I set out to answer: can a model trained on pre-decision page signals rank the portfolio for refresh review better than that rule - measured honestly, on clients it has never seen?</p>
+        </div>
+
+        <div class="case-block" id="f-method">
+          <div class="eyebrow">Method &amp; decisions</div>
+          <h2>Client-grouped validation, not a random split</h2>
+          <div class="pipeline">
+            <div class="step"><div class="n">01</div><div class="c"><h4>Excluded the label's own construction window</h4><p>Dropped 90-day rolling-total columns after confirming they correlate at 0.918 with the 30-day window the label is thresholded from - a disclosed structural overlap, not a hidden one.</p></div></div>
+            <div class="step"><div class="n">02</div><div class="c"><h4>Ran a confession test for leakage</h4><p>Injected the literal label-source column into the feature matrix on purpose. It drove ROC-AUC to a suspicious 1.000, confirming the harness would actually catch a leak if one slipped in.</p></div></div>
+            <div class="step"><div class="n">03</div><div class="c"><h4>Split by client, not by row</h4><p>Held out 6 of 32 clients entirely for testing, since rows from the same client share a site and a baseline traffic level - a row-random split would let the model partly memorize a client instead of generalizing to a new one.</p></div></div>
+            <div class="step"><div class="n">04</div><div class="c"><h4>Audited that split choice instead of assuming it</h4><p>Re-ran the identical model under a naive row-random split, which let 31 of 32 clients leak into both train and test - and measurably inflated every metric.</p></div></div>
+            <div class="step"><div class="n">05</div><div class="c"><h4>Skipped gradient boosting on purpose</h4><p>With a 2,325-row test set and a hand rule that only ever flags 17 pages, a heavier ensemble was complexity the data didn't yet justify against a conservatively-tuned Random Forest.</p></div></div>
+          </div>
+        </div>
+
+        <div class="case-block" id="f-finding">
+          <div class="eyebrow">What came of it</div>
+          <h2>Random Forest measured roughly double the precision - on the honest split</h2>
+          <p>On the client-grouped holdout, Random Forest reached a 0.749 ROC-AUC and 0.618 average precision, against Logistic Regression's 0.702 and 0.524, and a baseline that scores as an uninformative 0.500 because it never fires on this particular test slice at all. The bigger finding wasn't the win margin - it was what happened when I checked the validation design itself.</p>
+          <p>Re-scoring the same Random Forest under a naive row-random split overstated its Precision@50 by 0.14 and its average precision by 0.147, purely because 31 of 32 clients ended up in both the training set and the test set. That gap is exactly why every headline number here comes from the client-grouped split, not the more flattering one.</p>
+          <div class="quote-block"><p>"The naive split's Precision@50 overstates the honest, client-grouped number by 0.14 - confirming client-grouped validation as the correct design, not an optional extra."</p></div>
+        </div>
+
+        <div class="case-block" id="f-evidence">
+          <div class="eyebrow">The evidence</div>
+          <h2>Model vs. baseline, same client-holdout split</h2>
+          <div class="evidence-grid">
+            <div class="evidence-panel">
+              <div class="chart-bars">
+                <div class="col"><div class="val">0.500</div><div class="bar dim" style="height:50%"></div><div class="lbl">Baseline rule</div></div>
+                <div class="col"><div class="val">0.702</div><div class="bar dim" style="height:70%"></div><div class="lbl">Logistic Regression</div></div>
+                <div class="col"><div class="val">0.749</div><div class="bar" style="height:75%"></div><div class="lbl">Random Forest</div></div>
+              </div>
+              <div class="cap">Fig. 1 - ROC-AUC on the 2,325-row client-holdout test split (6 of 32 clients, never seen in training)</div>
+            </div>
+            <div class="evidence-panel">
+              <div class="chart-bars">
+                <div class="col"><div class="val">0.40</div><div class="bar dim" style="height:40%"></div><div class="lbl">LR, P@50</div></div>
+                <div class="col"><div class="val">0.76</div><div class="bar" style="height:76%"></div><div class="lbl">RF, P@50</div></div>
+                <div class="col"><div class="val">0.90</div><div class="bar dim" style="height:90%"></div><div class="lbl">RF, P@50 (naive split)</div></div>
+              </div>
+              <div class="cap">Fig. 2 - Precision@50 stays well above the 0.391 base rate for Random Forest on the honest split - and the naive split inflates it further, which is why it's disclosed and not used</div>
+            </div>
+          </div>
+          <p>Impurity-based and permutation importance agree on the same top signals: how consistently and how well a page shows up in search - days with impressions, log impressions, average position, and CTR - dominate, well ahead of word count or content age. That lines up with an earlier discovery that word count barely separates declining from growing pages at all.</p>
+        </div>
+
+        <div class="case-block" id="f-different">
+          <div class="eyebrow">What I'd do differently</div>
+          <h2>Route the model's blind spot to a human, don't paper over it</h2>
+          <p>The model's false negatives cluster on pages where <code>avg_position = 0</code> - the dataset's documented "no position data" code, not an actual top rank. Next time I'd flag that code earlier in the pipeline instead of near the end, so it can't quietly look like a real position anywhere upstream. The deployed version already routes those 51 pages to mandatory manual review rather than an automated score, but I'd rather the ambiguity never reach the model in the first place.</p>
+        </div>
+
+        <div class="case-nav">
+          <a href="#" class="prev" onclick="goPage('case-jobmarket');return false;"><span class="dir">← Previous</span><span class="t">Job Market Research</span></a>
           <a href="#" class="next" onclick="goPage('about');return false;"><span class="dir">Next →</span><span class="t">About Ali</span></a>
         </div>
       </div>
@@ -1001,28 +1126,28 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
       <div>
         <div class="case-block" style="margin-bottom:40px;">
           <p style="font-size:16.5px;color:var(--text)">I use data to test assumptions and explain patterns that aren't obvious at first glance. My work includes a 331,226-review sentiment study across 28 entertainment apps, a Power BI report that turned 60,000+ AdventureWorks sales records into a 5-page dashboard with 25+ visualizations and a category-bundling recommendation, and a 29-page job-market study comparing what 20 real employers ask for against what a typical data analytics curriculum teaches.</p>
-          <p style="font-size:15px;margin-top:14px;">I'm currently a BS Business Data Analytics student at COMSATS University Islamabad, Lahore Campus, working across three internships at once - machine learning, AI-powered analytics, and community data work - because I'd rather test something real than wait to finish a syllabus first.</p>
+          <p style="font-size:15px;margin-top:14px;">I'm currently a BS Business Data Analytics student at COMSATS University Islamabad, Lahore Campus, and across mid-2026 I ran three internships in parallel - machine learning, community data work, and AI-powered analytics - because I'd rather test something real than wait to finish a syllabus first.</p>
         </div>
 
         <h3 style="margin-bottom:20px;font-size:18px;">Background</h3>
         <div class="timeline">
           <div class="item">
-            <div class="when">Jun 2026 - Present</div>
+            <div class="when">Jul 2026 - Aug 2026</div>
             <h4>Machine Learning Intern</h4>
             <div class="org">FlyRank AI · Remote</div>
-            <p>Interning as an AI intern, focused on machine learning work.</p>
+            <p>Worked on a Click-Through Rate (CTR) prediction model to estimate user engagement with online advertisements - data preprocessing, feature engineering, and exploratory data analysis on large-scale datasets. Also designed and built this Data Analytics &amp; Machine Learning portfolio as part of FlyRank's AI Fluency track.</p>
           </div>
           <div class="item">
-            <div class="when">Jul 2026 - Present</div>
+            <div class="when">Jun 2026 - Aug 2026</div>
             <h4>Social Intern</h4>
             <div class="org">Alkhidmat Foundation Pakistan · Gujranwala, Punjab</div>
-            <p>Leadership, career development, and humanitarian training; contributed to a Child Protection Centre project running literacy and life-skills activities, and trained in first aid, disaster management, and community safety practices.</p>
+            <p>Completed leadership, career development, and humanitarian training, including first aid, CPR, disaster management, and community safety practices. Contributed to a Child Protection Centre project running literacy and life-skills activities for underprivileged children.</p>
           </div>
           <div class="item">
-            <div class="when">Aug 2026 - Present</div>
+            <div class="when">Aug 2026 - Sep 2026</div>
             <h4>AI-Powered Data Analytics Intern</h4>
             <div class="org">Excelerate &amp; Rochester Institute of Technology (RIT) · Remote</div>
-            <p>Working with an international team analyzing 8,500+ student participation records across 71 countries - data quality assessment, EDA, and KPI dashboards using Python, Pandas, NumPy, and Seaborn.</p>
+            <p>Collaborated with an international team on an AI-powered data analytics project analyzing 8,500+ student participation records across 71 countries. Performed data quality assessment, EDA, and built KPI dashboards using Python, Pandas, NumPy, and Seaborn.</p>
           </div>
         </div>
 
@@ -1116,26 +1241,32 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
       <div class="resume-section">
         <h3>Experience</h3>
         <div class="resume-entry">
-          <div class="row1"><h4>AI-Powered Data Analytics Intern - Excelerate &amp; RIT</h4><div class="when">Aug 2026 - Present</div></div>
+          <div class="row1"><h4>AI-Powered Data Analytics Intern - Excelerate &amp; RIT</h4><div class="when">Aug 2026 - Sep 2026</div></div>
           <div class="org">Remote</div>
           <ul>
-            <li>Collaborated with an international team analyzing 8,500+ student participation records across 71 countries.</li>
+            <li>Collaborated with an international team on an AI-powered data analytics project analyzing 8,500+ student participation records across 71 countries.</li>
             <li>Performed data quality assessment, missing-value analysis, duplicate detection, and feature classification using Python, Pandas, NumPy, and Seaborn.</li>
-            <li>Built interactive visualizations and KPI dashboards to communicate participation and engagement trends.</li>
+            <li>Conducted exploratory data analysis to identify participation trends, opportunity categories, demographic patterns, and application outcomes.</li>
+            <li>Developed interactive visualizations and KPI dashboards to communicate insights on student engagement and program participation.</li>
           </ul>
         </div>
         <div class="resume-entry">
-          <div class="row1"><h4>Social Intern - Alkhidmat Foundation Pakistan</h4><div class="when">Jul 2026 - Present</div></div>
+          <div class="row1"><h4>Social Intern - Alkhidmat Foundation Pakistan</h4><div class="when">Jun 2026 - Aug 2026</div></div>
           <div class="org">Gujranwala, Punjab, Pakistan · Remote</div>
           <ul>
-            <li>Completed training in first aid, CPR, disaster management, and community safety practices.</li>
-            <li>Contributed to a Child Protection Centre project delivering literacy and life-skills activities.</li>
+            <li>Completed training in leadership, career development, first aid, CPR, disaster management, and community safety practices.</li>
+            <li>Contributed to a Child Protection Centre project, organizing literacy, numeracy, and life-skills activities for underprivileged children.</li>
+            <li>Conducted research on volunteerism and community development in Pakistan, and strengthened communication and project-coordination skills through field and virtual engagement.</li>
           </ul>
         </div>
         <div class="resume-entry">
-          <div class="row1"><h4>Machine Learning Intern - FlyRank AI</h4><div class="when">Jun 2026 - Present</div></div>
+          <div class="row1"><h4>Machine Learning Intern - FlyRank AI</h4><div class="when">Jul 2026 - Aug 2026</div></div>
           <div class="org">Lahore, Punjab, Pakistan · Remote</div>
-          <ul><li>Interning as an AI intern with a focus on machine learning.</li></ul>
+          <ul>
+            <li>Worked on a Click-Through Rate (CTR) prediction model to estimate user engagement with online advertisements.</li>
+            <li>Performed data preprocessing, feature engineering, and exploratory data analysis on large-scale datasets, then applied machine learning techniques to optimize predictive performance.</li>
+            <li>Evaluated model effectiveness using industry-relevant classification metrics, gaining hands-on experience in end-to-end machine learning workflow development.</li>
+          </ul>
         </div>
       </div>
 
@@ -1165,6 +1296,14 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2); outline
           <ul>
             <li>Analyzed 20 real job descriptions to quantify employer demand - SQL ranked #1 skill (80%, 16/20), Power BI #1 tool (60%); built a 6-chart Excel dashboard visualizing the results.</li>
             <li>Produced a 29-page structured research report comparing Pakistani vs. global employer expectations to inform career positioning for aspiring data analysts.</li>
+          </ul>
+        </div>
+        <div class="resume-entry">
+          <div class="row1"><h4>Content-Refresh Prioritization Model - FlyRank Internship</h4><div class="when">2026</div></div>
+          <div class="org">Machine Learning · scikit-learn · Client-Grouped Validation</div>
+          <ul>
+            <li>Built a Random Forest model to rank a 30,000-page, 32-client content portfolio for refresh review, reaching a 0.749 ROC-AUC against a hand-written rule's uninformative 0.500 baseline.</li>
+            <li>Validated on a client-grouped holdout (6 of 32 clients never seen in training) and ran a leakage confession test, then audited the split itself - showing a naive row-random split overstated Precision@50 by 0.14.</li>
           </ul>
         </div>
         <div class="resume-entry">
@@ -1354,6 +1493,13 @@ const projects = [
     insight: "SQL and communication outrank Python by a wide margin across 20 real job descriptions, split evenly Pakistan / global.",
     tools: ["Excel","AI-assisted extraction"], page: "case-jobmarket",
     bars: [100,69,62,38,13]
+  },
+  {
+    tag: "Machine Learning · FlyRank Internship", title: "Content-Refresh Prioritization Model",
+    metric: "0.749", metricLbl: "ROC-AUC, Random Forest · client-holdout",
+    insight: "A hand-written rule only ever flags 17 of 30,000 pages. A client-grouped Random Forest reaches 0.76 Precision@50 on 6 clients it never trained on - and a naive random split would have overstated that by 0.14.",
+    tools: ["Python","scikit-learn","Random Forest","Client-grouped validation"], page: "case-flyrank",
+    bars: [50,70,75,76]
   }
 ];
 
@@ -1406,7 +1552,7 @@ document.getElementById('certGrid').innerHTML = certs.map(c=>`
   </div>`).join('');
 
 /* ============ ROUTER ============ */
-const pages = ['home','projects','case-sentiment','case-adventureworks','case-jobmarket','about','certifications','resume','contact'];
+const pages = ['home','projects','case-sentiment','case-adventureworks','case-jobmarket','case-flyrank','about','certifications','resume','contact'];
 function goPage(id){
   if(!pages.includes(id)) id='home';
   pages.forEach(p=>{
@@ -1517,17 +1663,21 @@ const resumeData = {
   summary: "BS Business Data Analytics student skilled in SQL, Power BI, and Python, with hands-on experience testing assumptions against real data - from a 331,226-review NLP sentiment study to a 60,000-record Power BI report and a 29-page job-market research report. Comfortable taking a project from a plain question through cleaning, modeling, and a decision someone can act on. Seeking a Data Analyst internship or entry-level role.",
   sections: [
     { title: "Experience", entries: [
-      { h: "AI-Powered Data Analytics Intern - Excelerate & RIT", when: "Aug 2026 - Present", org: "Remote", bullets: [
-        "Collaborated with an international team analyzing 8,500+ student participation records across 71 countries.",
+      { h: "AI-Powered Data Analytics Intern - Excelerate & RIT", when: "Aug 2026 - Sep 2026", org: "Remote", bullets: [
+        "Collaborated with an international team on an AI-powered data analytics project analyzing 8,500+ student participation records across 71 countries.",
         "Performed data quality assessment, missing-value analysis, duplicate detection, and feature classification using Python, Pandas, NumPy, and Seaborn.",
-        "Built interactive visualizations and KPI dashboards to communicate participation and engagement trends."
+        "Conducted exploratory data analysis to identify participation trends, opportunity categories, demographic patterns, and application outcomes.",
+        "Developed interactive visualizations and KPI dashboards to communicate insights on student engagement and program participation."
       ]},
-      { h: "Social Intern - Alkhidmat Foundation Pakistan", when: "Jul 2026 - Present", org: "Gujranwala, Punjab, Pakistan \u00b7 Remote", bullets: [
-        "Completed training in first aid, CPR, disaster management, and community safety practices.",
-        "Contributed to a Child Protection Centre project delivering literacy and life-skills activities."
+      { h: "Social Intern - Alkhidmat Foundation Pakistan", when: "Jun 2026 - Aug 2026", org: "Gujranwala, Punjab, Pakistan \u00b7 Remote", bullets: [
+        "Completed training in leadership, career development, first aid, CPR, disaster management, and community safety practices.",
+        "Contributed to a Child Protection Centre project, organizing literacy, numeracy, and life-skills activities for underprivileged children.",
+        "Conducted research on volunteerism and community development in Pakistan, strengthening communication and project-coordination skills through field and virtual engagement."
       ]},
-      { h: "Machine Learning Intern - FlyRank AI", when: "Jun 2026 - Present", org: "Lahore, Punjab, Pakistan \u00b7 Remote", bullets: [
-        "Interning as an AI intern with a focus on machine learning."
+      { h: "Machine Learning Intern - FlyRank AI", when: "Jul 2026 - Aug 2026", org: "Lahore, Punjab, Pakistan \u00b7 Remote", bullets: [
+        "Worked on a Click-Through Rate (CTR) prediction model to estimate user engagement with online advertisements.",
+        "Performed data preprocessing, feature engineering, and exploratory data analysis on large-scale datasets, then applied machine learning techniques to optimize predictive performance.",
+        "Evaluated model effectiveness using industry-relevant classification metrics, gaining hands-on experience in end-to-end machine learning workflow development."
       ]}
     ]},
     { title: "Project Experience", entries: [
